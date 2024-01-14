@@ -1,0 +1,65 @@
+classDiagram 
+direction TB
+
+class Owner {
+    -String owner
+}
+
+Owner "1..*".."0..*" User
+Owner "1..*".."0..*" Staff:heeft
+
+class Staff {
+    -int id    
+    -String staffmember
+}
+
+Staff "*..*".."0..*" User
+
+class User {
+    -String userName
+    -String password
+}
+
+User "*..*".."0..*" Stock
+
+class Stock {
+    -int numberInStock
+    -int numberOnOrder
+    -int numberSold
+}
+
+Stock "1..*".."1" Product
+
+
+
+class Product {
+    <<abstract>>
+    -String name
+    -String features
+    -String buyingPrice
+    -String sellingPrice
+}
+
+class TV {
+    -String [] worksWith
+}
+
+TV "0..*"--|>"0..*" Product
+
+class RemoteControl {
+    -String [] worksWith
+}
+
+RemoteControl "0..*"--|>"0..*" Product
+
+class WallMount {
+    -String [] worksWith
+}
+
+WallMount "0..*"--|>"0..*" Product
+
+class CIModule {
+    -String [] worksWith
+}
+
+CIModule "0..*"--|>"0..*" Product
